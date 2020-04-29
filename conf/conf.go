@@ -58,7 +58,7 @@ func Setup() {
 
 	mapTo("app", &App)
 	mapTo("database", &Database)
-	mapTo("cache", &Redis)
+	mapTo("redis", &Redis)
 }
 
 // mapTo map section
