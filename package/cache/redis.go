@@ -22,6 +22,6 @@ func redis() {
 
 	_, err := r.Ping().Result()
 	if err != nil {
-		logs.Warn("redis setup err: ", err.Error())
+		logs.Warn("redis setup err: " + err.Error())
 	}
 }

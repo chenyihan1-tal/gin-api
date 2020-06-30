@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/xaviercry/gopkg/logs"
+
 	"github.com/xaviercry/gin-api/conf"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/xaviercry/gopkg/logs"
 )
 
 var db *gorm.DB
@@ -23,7 +24,12 @@ func Setup() {
 		conf.Database.Name))
 
 	if err != nil {
-		logs.Fatal("database setup err: ", err)
+		if conf.App.RunMode != "release" {
+			logs.Error("database setup err: " + err.Error())
+		} else {
+			logs.Fatal("database setup err: " + err.Error())
+		}
+		return
 	}
 
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {

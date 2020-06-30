@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 
 	"github.com/xaviercry/gin-api/conf"
 	"github.com/xaviercry/gin-api/model"
@@ -19,27 +18,17 @@ func init() {
 	model.Setup()
 }
 
-// @title Golang Gin API
+// @title GIN-API
 // @version 1.0
-// @description An example of gin
+// @description 响应码说明: 2xx请求成功，3xx重定向，4xx请求错误，5xx服务器错误
 func main() {
 	gin.SetMode(conf.App.RunMode)
 
-	routersInit := router.Setup()
-	readTimeout := conf.App.ReadTimeout
-	writeTimeout := conf.App.WriteTimeout
-	endPoint := fmt.Sprintf(":%d", conf.App.HttpPort)
-	maxHeaderBytes := 1 << 20
+	app := router.Setup()
 
-	server := &http.Server{
-		Addr:           endPoint,
-		Handler:        routersInit,
-		ReadTimeout:    readTimeout,
-		WriteTimeout:   writeTimeout,
-		MaxHeaderBytes: maxHeaderBytes,
-	}
+	endPoint := fmt.Sprintf(":%d", conf.App.HttpPort)
 
 	log.Printf("[info] start http server listening %s", endPoint)
 
-	server.ListenAndServe()
+	app.Run(endPoint)
 }
