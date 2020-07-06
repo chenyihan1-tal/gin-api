@@ -36,7 +36,7 @@ func Setup() {
 		return conf.Database.TablePrefix + defaultTableName
 	}
 
-	db.SingularTable(true)
+	db.SingularTable(true) // 禁用复数表名
 	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallback)
 	db.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallback)
 	db.Callback().Delete().Replace("gorm:delete", deleteCallback)
