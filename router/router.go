@@ -68,7 +68,7 @@ func logs() gin.HandlerFunc {
 
 		body, _ := ioutil.ReadAll(c.Request.Body)
 
-		log.Printf("\n[%s][%d][%dms][%s][%s][%s][%s]",
+		log.Printf("[%s][%d][%dms][%s][body:%s][host:%s][referer:%s]\n",
 			c.Request.Method,
 			c.Writer.Status(),
 			latency,
