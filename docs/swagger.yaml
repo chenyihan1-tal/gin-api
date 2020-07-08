@@ -1,0 +1,44 @@
+definitions:
+  api.ResOK:
+    properties:
+      code:
+        example: 200
+        type: integer
+      data:
+        type: object
+      msg:
+        example: OK
+        type: string
+    type: object
+info:
+  contact: {}
+  description: '响应码说明: 2xx请求成功，3xx重定向，4xx请求错误，5xx服务器错误'
+  license: {}
+  title: GIN-API
+  version: "1.0"
+paths:
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: 获取用户列表
+      parameters:
+      - description: 分页参数
+        in: query
+        name: num
+        type: integer
+      - description: 分页参数
+        in: query
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ResOK'
+      summary: 获取用户列表
+      tags:
+      - 用户
+swagger: "2.0"
