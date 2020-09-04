@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/xaviercry/gin-api/conf"
-	"github.com/xaviercry/gin-api/model"
-	"github.com/xaviercry/gin-api/package/cache"
-	"github.com/xaviercry/gin-api/router"
+	"github.com/xavierror/gin-api/conf"
+	"github.com/xavierror/gin-api/model"
+	"github.com/xavierror/gin-api/package/cache"
+	"github.com/xavierror/gin-api/package/redLock"
+	"github.com/xavierror/gin-api/package/single"
+	"github.com/xavierror/gin-api/router"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,6 +18,8 @@ func init() {
 	conf.Setup()
 	cache.Setup()
 	model.Setup()
+	single.Setup()
+	go redLock.Setup()
 }
 
 // @title GIN-API

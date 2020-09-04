@@ -4,12 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/xaviercry/gopkg/logs"
-
-	"github.com/xaviercry/gin-api/conf"
-
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/xavierror/gowheel/logs"
+
+	"github.com/xavierror/gin-api/conf"
 )
 
 var db *gorm.DB

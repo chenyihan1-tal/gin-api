@@ -1,18 +1,18 @@
 package cache
 
 import (
-	"github.com/xaviercry/gin-api/conf"
+	"github.com/xavierror/gin-api/conf"
 
 	Redis "github.com/go-redis/redis"
-	"github.com/xaviercry/gopkg/logs"
+	"github.com/xavierror/gowheel/logs"
 )
 
 var (
-	r *Redis.Client
+	R *Redis.Client
 )
 
 func redis() {
-	r = Redis.NewClient(&Redis.Options{
+	R = Redis.NewClient(&Redis.Options{
 		Addr:         conf.Redis.Host,
 		Password:     conf.Redis.Password,
 		IdleTimeout:  conf.Redis.IdleTimeout,
@@ -20,7 +20,7 @@ func redis() {
 		MinIdleConns: conf.Redis.MinIdle,
 	})
 
-	_, err := r.Ping().Result()
+	_, err := R.Ping().Result()
 	if err != nil {
 		logs.Warn("redis setup err: " + err.Error())
 	}

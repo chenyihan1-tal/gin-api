@@ -10,9 +10,9 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
 
-	"github.com/xaviercry/gin-api/api"
-	"github.com/xaviercry/gin-api/conf"
-	_ "github.com/xaviercry/gin-api/docs"
+	"github.com/xavierror/gin-api/api"
+	"github.com/xavierror/gin-api/conf"
+	_ "github.com/xavierror/gin-api/docs"
 )
 
 // Setup initialize routing information

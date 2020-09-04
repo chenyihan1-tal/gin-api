@@ -22,6 +22,8 @@ var (
 		HttpPort     int
 		ReadTimeout  time.Duration
 		WriteTimeout time.Duration
+
+		RedLockKey string
 	}
 	Database struct {
 		Type        string

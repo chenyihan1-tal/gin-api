@@ -4,16 +4,16 @@ import (
 	"time"
 
 	"github.com/patrickmn/go-cache"
-	"github.com/xaviercry/gopkg/logs"
+	"github.com/xavierror/gowheel/logs"
 )
 
-var m *cache.Cache
+var M *cache.Cache
 
 func memory() {
-	m = cache.New(30*time.Minute, 10*time.Minute)
+	M = cache.New(30*time.Minute, 10*time.Minute)
 
-	m.Set("test",10086,0)
-	_ , ok := m.Get("test")
+	M.Set("test",10086,0)
+	_ , ok := M.Get("test")
 	if !ok {
 		logs.Error("memory cache setup fail")
 	}
